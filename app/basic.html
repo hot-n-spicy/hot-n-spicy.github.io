@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Order food online from Hot N Spicy">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hot n' Spicy</title>
+
+    <!-- Disable tap highlight on IE -->
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <!-- Web Application Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Hot N Spicy">
+    <link rel="icon" sizes="192x192" href="images/touch/chrome-touch-icon-192x192.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Hot N Spicy">
+    <link rel="apple-touch-icon" href="images/touch/apple-touch-icon.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#2F3BA2">
+
+    <!-- Color the status bar on mobile devices -->
+    <meta name="theme-color" content="#2F3BA2">
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/main.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
+    <script async defer src="https://smartlock.google.com/client"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
+  </head>
+  <body>
+    <!-- Add your site or app content here -->
+    <!--header class="header clearfix">
+      <nav>
+        <ul>
+        </ul>
+      </nav>
+    </header -->
+    <img src="images/background.png" class="img-fluid" style="width:100%" alt="">
+    <main role="main" class="container">
+      
+        
+        <div class="input-group">
+          <span class="input-group-btn">
+            <button class="btn btn-success" type="button" onclick="getLocation()"><i class="fas fa-location-arrow"></i></button>
+          </span>
+          <input type="text" class="form-control" id="pac-input" placeholder="Enter delivery location" aria-label="Search for...">
+        </div>
+      
+    </main>
+    
+
+    <footer class="footer">
+      <div class="container">
+        <span>Your cart<i class="float-right center fas fa-shopping-cart"></i></span>
+        
+      </div>
+    </footer>
+    
+    <!-- Firebase initialization -->
+    <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+    <script src="scripts/app.js"></script>
+    <!-- build:js scripts/main.min.js -->
+    <script src="scripts/main.js"></script>
+    <script type="text/javascript">
+      function activatePlacesSearch() {
+        var defaultBounds = new google.maps.LatLngBounds(
+          new google.maps.LatLng(13.334640, 74.767989),
+          new google.maps.LatLng(13.372732, 74.798430));
+        var options = {
+          bounds: defaultBounds
+        };
+        var input = document.getElementById('pac-input');
+        var autocomplete = new google.maps.places.Autocomplete(input, options);
+      }
+      
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+          console.error("Geolocation is not supported by this browser.");
+        }
+      }
+      function showPosition(position) {
+          var latitude = position.coords.latitude;
+          var longitude = position.coords.longitude;
+          console.log(latitude, longitude);
+      }
+      
+      window.onGoogleYoloLoad = (googleyolo) => {
+        // The 'googleyolo' object is ready for use.
+      };
+    </script>
+    <!-- endbuild -->
+
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-110956703-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATrNIpMu4hXD7IxuznSfOpWVgHGc6brPI&libraries=places&callback=activatePlacesSearch"></script>
+    <!-- Built with love using Web Starter Kit -->
+  </body>
+</html>
