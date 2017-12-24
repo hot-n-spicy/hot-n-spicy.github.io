@@ -1,125 +1,302 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Order food online from Hot N Spicy">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hot n' Spicy</title>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Order food online from Hot N Spicy">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <title>Hot n' Spicy</title>
+  
+  <!-- Disable tap highlight on IE -->
+  <meta name="msapplication-tap-highlight" content="no">
+  
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Hot N Spicy">
+  <link rel="icon" sizes="192x192" href="images/touch/chrome-touch-icon-192x192.png">
+  
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Hot N Spicy">
+  <link rel="apple-touch-icon" href="images/touch/apple-touch-icon.png">
+  
+  <!-- Tile icon for Win8 (144x144 + tile color) -->
+  <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+  <meta name="msapplication-TileColor" content="#2F3BA2">
+  
+  <!-- Color the status bar on mobile devices -->
+  <meta name="theme-color" content="#2F3BA2">
+  
+  <!-- Web Application Manifest -->
+  <link rel="manifest" href="manifest.json">
+  
+  <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+  <!--
+  <link rel="canonical" href="http://www.example.com/">
+-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+<!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous"-->
+<!--link rel="stylesheet" href="styles/main.css"-->
+<script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
+<script src="https://smartlock.google.com/client"></script>
+<script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
+</head>
+<body>
+  <!-- Add your site or app content here -->
+  
+  <!--header class="header clearfix">
+  <nav>
+  <ul>
+</ul>
+</nav>
+</header -->
 
-    <!-- Disable tap highlight on IE -->
-    <meta name="msapplication-tap-highlight" content="no">
-
-    <!-- Web Application Manifest -->
-    <link rel="manifest" href="manifest.json">
-
-    <!-- Add to homescreen for Chrome on Android -->
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="Hot N Spicy">
-    <link rel="icon" sizes="192x192" href="images/touch/chrome-touch-icon-192x192.png">
-
-    <!-- Add to homescreen for Safari on iOS -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Hot N Spicy">
-    <link rel="apple-touch-icon" href="images/touch/apple-touch-icon.png">
-
-    <!-- Tile icon for Win8 (144x144 + tile color) -->
-    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
-    <meta name="msapplication-TileColor" content="#2F3BA2">
-
-    <!-- Color the status bar on mobile devices -->
-    <meta name="theme-color" content="#2F3BA2">
-
-    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
-    <!--
-    <link rel="canonical" href="http://www.example.com/">
-    -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles/main.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
-    <script async defer src="https://smartlock.google.com/client"></script>
-    <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
-  </head>
-  <body>
-    <!-- Add your site or app content here -->
-    <!--header class="header clearfix">
-      <nav>
-        <ul>
-        </ul>
-      </nav>
-    </header -->
-    <img src="images/background.png" class="img-fluid" style="width:100%" alt="">
-    <main role="main" class="container">
-      
-        
-        <div class="input-group">
-          <span class="input-group-btn">
-            <button class="btn btn-success" type="button" onclick="getLocation()"><i class="fas fa-location-arrow"></i></button>
-          </span>
-          <input type="text" class="form-control" id="pac-input" placeholder="Enter delivery location" aria-label="Search for...">
+<img src="images/background.png" class="ui fluid image" style="width:100%" alt="">
+<div class="ui container">
+  <div class="ui fluid left action input">
+    <button class="ui teal labeled icon button">
+      <i class="crosshairs icon"></i>
+      Locate me
+    </button>
+    <input type="text" class="form-control" id="pac-input" placeholder="Use GPS or enter location" aria-label="Use GPS or enter location">
+  </div>
+  <!--div class="input-group">
+  <span class="input-group-btn">
+  <button class="btn btn-success" type="button" onclick="getLocation()"><i class="fas fa-location-arrow"></i></button>
+  </span>
+  <input type="text" class="form-control" id="pac-input" placeholder="Enter delivery location" aria-label="Search for...">
+  </div-->
+<h3 class="ui block header">
+  Menu
+</h3>
+<div class="ui styled fluid accordion">
+  <div class="title">
+    <i class="dropdown icon"></i>
+    Soups
+  </div>
+  <div class="content">
+    <div class="ui middle aligned divided list">
+      <div class="item">
+        <div class="right floated content">
+          <div class="ui tiny button">Add</div>
         </div>
-      
-    </main>
-    
-
-    <footer class="footer">
-      <div class="container">
-        <span>Your cart<i class="float-right center fas fa-shopping-cart"></i></span>
-        
+        <!--img class="ui avatar image" src="/images/avatar2/small/lena.png"-->
+        <div id="soup1" class="content">
+        </div>
       </div>
-    </footer>
-    
-    <!-- Firebase initialization -->
-    <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
-    <script src="scripts/app.js"></script>
-    <!-- build:js scripts/main.min.js -->
-    <script src="scripts/main.js"></script>
-    <script type="text/javascript">
-      function activatePlacesSearch() {
-        var defaultBounds = new google.maps.LatLngBounds(
-          new google.maps.LatLng(13.334640, 74.767989),
-          new google.maps.LatLng(13.372732, 74.798430));
-        var options = {
-          bounds: defaultBounds
-        };
-        var input = document.getElementById('pac-input');
-        var autocomplete = new google.maps.places.Autocomplete(input, options);
-      }
-      
-      function getLocation() {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(showPosition);
-        } else {
-          console.error("Geolocation is not supported by this browser.");
-        }
-      }
-      function showPosition(position) {
-          var latitude = position.coords.latitude;
-          var longitude = position.coords.longitude;
-          console.log(latitude, longitude);
-      }
-      
-      window.onGoogleYoloLoad = (googleyolo) => {
-        // The 'googleyolo' object is ready for use.
-      };
-    </script>
-    <!-- endbuild -->
+      <div class="item">
+        <div class="right floated content">
+          <div class="ui tiny button">Add</div>
+        </div>
+        <!--img class="ui avatar image" src="/images/avatar2/small/lindsay.png"-->
+        <div id="soup2" class="content">
+          Lindsay
+        </div>
+      </div>
+      <div class="item">
+        <div class="right floated content">
+          <div class="ui tiny button">Add</div>
+        </div>
+        <!--img class="ui avatar image" src="/images/avatar2/small/mark.png"-->
+        <div id="soup3" class="content">
+          Mark
+        </div>
+      </div>
+      <div class="item">
+        <div class="right floated content">
+          <div class="ui tiny button">Add</div>
+        </div>
+        <!--img class="ui avatar image" src="/images/avatar2/small/molly.png"-->
+        <div id="soup4" class="content"></div>
+      </div>
+    </div>
+  </div>
+  <div class="title">
+    <i class="dropdown icon"></i>
+    Burgers
+  </div>
+  <div class="content">
+    <p></p>
+  </div>
+  <div class="title">
+    <i class="dropdown icon"></i>
+    Shawarma
+  </div>
+  <div class="content">
+    <p></p>
+  </div>
+</div>
+</div>
+<div>
+  
+</div>
+<div class="ui fixed bottom sticky raised segment">
+  <!--div class="ui container"-->
+    <!--span-->Your cart<i class="teal shop icon"></i><!--/span-->
+  <!--/div-->
+</div>
 
-    <!-- Google Analytics -->
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-      ga('create', 'UA-110956703-1', 'auto');
-      ga('send', 'pageview');
-    </script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATrNIpMu4hXD7IxuznSfOpWVgHGc6brPI&libraries=places&callback=activatePlacesSearch"></script>
-    <!-- Built with love using Web Starter Kit -->
-  </body>
+
+
+<!-- Firebase initialization -->
+<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-firestore.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyB6nvvS6_d0L5vFyK4sIoCVmPfQJ7XPB44",
+    authDomain: "hotandspicy-manipal.firebaseapp.com",
+    databaseURL: "https://hotandspicy-manipal.firebaseio.com",
+    projectId: "hotandspicy-manipal",
+    storageBucket: "hotandspicy-manipal.appspot.com",
+    messagingSenderId: "571495112460"
+  };
+  firebase.initializeApp(config);
+</script>
+<script src="scripts/app.js"></script>
+<!-- build:js scripts/main.min.js -->
+<script src="scripts/main.js"></script>
+<script type="text/javascript">
+
+</script>
+<script type="text/javascript">
+  function activatePlacesSearch() {
+    var defaultBounds = new google.maps.LatLngBounds(
+      new google.maps.LatLng(13.334640, 74.767989),
+      new google.maps.LatLng(13.372732, 74.798430));
+      var options = {
+        bounds: defaultBounds
+      };
+      var input = document.getElementById('pac-input');
+      var autocomplete = new google.maps.places.Autocomplete(input, options);
+    }
+    
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        console.error("Geolocation is not supported by this browser.");
+      }
+    }
+    function showPosition(position) {
+      var latitude = position.coords.latitude;
+      var longitude = position.coords.longitude;
+      console.log(latitude, longitude);
+    }
+    
+    window.onGoogleYoloLoad = (googleyolo) => {
+      // The 'googleyolo' object is ready for use.
+      console.log("The 'googleyolo' object is ready for use.");
+    };
+    
+    const retrievePromise = googleyolo.retrieve({
+      supportedAuthMethods: [
+        "https://accounts.google.com",
+        "googleyolo://id-and-password"
+      ],
+      supportedIdTokenProviders: [
+        {
+          uri: "https://accounts.google.com",
+          clientId: "571495112460-8ds913hb2lg3kgkj4a22aue2puppgu0o.apps.googleusercontent.com"
+        }
+      ]
+    });
+    
+    retrievePromise.then((credential) => {
+      if (credential.password) {
+        // An ID (usually email address) and password credential was retrieved.
+        // Sign in to your backend using the password.
+        signInWithEmailAndPassword(credential.id, credential.password);
+      } else {
+        // A Google Account is retrieved. Since Google supports ID token responses,
+        // you can use the token to sign in instead of initiating the Google sign-in
+        // flow.
+        useGoogleIdTokenForAuth(credential.idToken);
+      }
+    }, (error) => {
+      // Credentials could not be retrieved. In general, if the user does not
+      // need to be signed in to use the page, you can just fail silently; or,
+      // you can also examine the error object to handle specific error cases.
+
+      // If retrieval failed because there were no credentials available, and
+      // signing in might be useful or is required to proceed from this page,
+      // you can call `hint()` to prompt the user to select an account to sign
+      // in or sign up with.
+      if (error.type === 'noCredentialsAvailable') {
+        googleyolo.hint({
+          supportedAuthMethods: [
+            "https://accounts.google.com"
+          ],
+          supportedIdTokenProviders: [
+            {
+              uri: "https://accounts.google.com",
+              clientId: "571495112460-8ds913hb2lg3kgkj4a22aue2puppgu0o.apps.googleusercontent.com"
+            }
+          ]
+        }).then((credential) => {
+          if (credential.idToken) {
+            // Send the token to your auth backend.
+            useGoogleIdTokenForAuth(credential.idToken);
+          }
+        }, (error) => {
+          switch (error.type) {
+            case "userCanceled":
+              // The user closed the hint selector. Depending on the desired UX,
+              // request manual sign up or do nothing.
+              break;
+            case "noCredentialsAvailable":
+              // No hint available for the session. Depending on the desired UX,
+              // request manual sign up or do nothing.
+              break;
+            case "requestFailed":
+              // The request failed, most likely because of a timeout.
+              // You can retry another time if necessary.
+              break;
+            case "operationCanceled":
+              // The operation was programmatically canceled, do nothing.
+              break;
+            case "illegalConcurrentRequest":
+              // Another operation is pending, this one was aborted.
+              break;
+            case "initializationError":
+              // Failed to initialize. Refer to error.message for debugging.
+              break;
+            case "configurationError":
+              // Configuration error. Refer to error.message for debugging.
+              break;
+            default:
+              // Unknown error, do nothing.
+          }
+        });
+      }
+    });
+</script>
+  <!-- endbuild -->
+  
+  <!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-110956703-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script>
+ $( function() {
+   $('.ui.accordion').accordion({
+     collapsible: true
+   });
+ } );
+</script>
+<!--script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+<!--script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script-->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATrNIpMu4hXD7IxuznSfOpWVgHGc6brPI&libraries=places&callback=activatePlacesSearch"></script>
+<!-- Built with love using Web Starter Kit -->
+</body>
 </html>
